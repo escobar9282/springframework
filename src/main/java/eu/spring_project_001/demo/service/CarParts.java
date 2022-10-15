@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @AllArgsConstructor
@@ -32,4 +29,8 @@ public class CarParts
     private String oilSump;
     private String exhaust;
     private String engine;
+
+    @ManyToOne
+    @JoinColumn(name = "car_id", nullable = false)
+    private Car car;
 }
