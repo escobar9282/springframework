@@ -3,10 +3,9 @@ package eu.spring_project_001.demo.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/cars")
@@ -20,5 +19,19 @@ public class CarController
     {
         carShowroom.addCarToSystem(car);
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Car>> getCars()
+    {
+        List<Car> carList = carShowroom.getAllCars();
+        return new ResponseEntity<>(carList, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Car> removeCar(@PathVariable("id") Long id)
+    {
+        carShowroom.deleteCar(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

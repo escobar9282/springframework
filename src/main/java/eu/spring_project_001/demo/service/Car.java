@@ -13,19 +13,19 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "car")
+@Table(name = "car", schema = "PUBLIC")
 public class Car
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private TypeOfEngine type;
+    private TypeOfEngine typeOfEngine;
     private String model;
     private String makeOfCar;
 
     @ManyToOne
-    @JoinColumn(name = "owner_id", nullable = false)
+    @JoinColumn(name = "owner_id")
     private Owner owner;
 
     @OneToMany(mappedBy = "car")

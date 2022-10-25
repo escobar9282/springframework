@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "xyz")
+@Table(name = "carService")
 public class CarService {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,6 +45,6 @@ public class CarService {
     private double maxPriceForLights = 1000.0;
 
     @ManyToOne
-    @JoinColumn(name = "owner_id", nullable = false)
+    @JoinColumn(name = "owner_id")
     private Owner owner;
 }

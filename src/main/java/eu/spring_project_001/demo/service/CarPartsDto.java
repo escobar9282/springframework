@@ -3,21 +3,12 @@ package eu.spring_project_001.demo.service;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-import javax.persistence.*;
-
-@Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
-@Setter
-public class CarParts
+@NoArgsConstructor
+@AllArgsConstructor
+public class CarPartsDto
 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     private String wheel;
     private String brakes;
     private String aluRim;
@@ -29,8 +20,5 @@ public class CarParts
     private String oilSump;
     private String exhaust;
     private String engine;
-
-    @ManyToOne
-    @JoinColumn(name = "car_id")
-    private Car car;
+    private Long carId;
 }
