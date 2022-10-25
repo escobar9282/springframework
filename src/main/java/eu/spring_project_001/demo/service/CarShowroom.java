@@ -11,15 +11,15 @@ import java.util.List;
 public class CarShowroom
 {
     private final CarRepo carRepo;
+    private final OwnerRepo ownerRepo;
 
-    public void addCarToSystem(Car car)
+    public void addCarToSystem(CarDto carDto)
     {
         Car carToSave = new Car();
-        carToSave.setMakeOfCar(car.getMakeOfCar());
-        carToSave.setTypeOfEngine(car.getTypeOfEngine());
-        carToSave.setModel(car.getModel());
-        carToSave.setOwner(car.getOwner());
-        carToSave.setCarParts(car.getCarParts());
+        carToSave.setMakeOfCar(carDto.getMakeOfCar());
+        carToSave.setTypeOfEngine(carDto.getTypeOfEngine());
+        carToSave.setModel(carDto.getModel());
+        carToSave.setOwner(resolveOwnerById(carDto.getOwnerId()));
         carRepo.save(carToSave);
     }
 
@@ -32,4 +32,10 @@ public class CarShowroom
     {
         carRepo.deleteById(id);
     }
+
+    private Owner resolveOwnerById(Long id)
+    {
+        return ownerRepo.findById(id).orElseThrow(()-> new OwnerNotFoundException(id));
+    }
+
 }

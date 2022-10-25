@@ -15,7 +15,7 @@ public class CarController
     private final CarShowroom carShowroom;
 
     @PostMapping("/add")
-    public ResponseEntity<Car> addCar(@RequestBody Car car)
+    public ResponseEntity<Car> addCar(@RequestBody CarDto car)
     {
         carShowroom.addCarToSystem(car);
         return new ResponseEntity<>(HttpStatus.CREATED);

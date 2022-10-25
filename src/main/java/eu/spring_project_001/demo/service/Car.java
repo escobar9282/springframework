@@ -13,7 +13,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "car", schema = "PUBLIC")
+@Table(name = "car")
 public class Car
 {
     @Id
