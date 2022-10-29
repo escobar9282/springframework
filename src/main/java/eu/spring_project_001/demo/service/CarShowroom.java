@@ -38,4 +38,16 @@ public class CarShowroom
         return ownerRepo.findById(id).orElseThrow(()-> new OwnerNotFoundException(id));
     }
 
+    public Car editCar(Long id, CarDto carDto)
+    {
+        Car concealedCar = carRepo.findById(id).orElseThrow(()-> new CarNotFoundException(id));
+        concealedCar.setMakeOfCar(carDto.getMakeOfCar());
+        concealedCar.setModel(carDto.getModel());
+        concealedCar.setTypeOfEngine(carDto.getTypeOfEngine());
+        concealedCar.setOwner(resolveOwnerById(carDto.getOwnerId()));
+        carRepo.save(concealedCar);
+
+        return concealedCar;
+    }
+
 }

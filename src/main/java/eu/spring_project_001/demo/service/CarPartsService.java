@@ -47,4 +47,23 @@ public class CarPartsService
         repo.deleteById(id);
     }
 
+    public CarParts editCarParts(Long id, CarPartsDto carPartsDto)
+    {
+        CarParts concealedCarParts = repo.findById(id).orElseThrow(()-> new CarPartsNotFoundException(id));
+        concealedCarParts.setWheel(carPartsDto.getWheel());
+        concealedCarParts.setBrakes(carPartsDto.getBrakes());
+        concealedCarParts.setAluRim(carPartsDto.getAluRim());
+        concealedCarParts.setTurbine(carPartsDto.getTurbine());
+        concealedCarParts.setLights(carPartsDto.getLights());
+        concealedCarParts.setLightBulb(carPartsDto.getLightBulb());
+        concealedCarParts.setGearbox(carPartsDto.getGearbox());
+        concealedCarParts.setWipers(carPartsDto.getWipers());
+        concealedCarParts.setOilSump(carPartsDto.getOilSump());
+        concealedCarParts.setExhaust(carPartsDto.getExhaust());
+        concealedCarParts.setEngine(carPartsDto.getEngine());
+        concealedCarParts.setCar(resolveCarById(carPartsDto.getCarId()));
+        repo.save(concealedCarParts);
+
+        return concealedCarParts;
+    }
 }

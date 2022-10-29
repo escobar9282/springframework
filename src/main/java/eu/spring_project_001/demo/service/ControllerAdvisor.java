@@ -27,4 +27,11 @@ public class ControllerAdvisor
         ErrorMessage errorMessage = new ErrorMessage(400, LocalDate.now(), exception.getMessage(), "Exception has appeared please fix the request.");
         return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(CarPartsNotFoundException.class)
+    public ResponseEntity<ErrorMessage> concealCarParts(CarPartsNotFoundException exception)
+    {
+        ErrorMessage errorMessage = new ErrorMessage(400, LocalDate.now(), exception.getMessage(), "Exception has appeared please fix the request.");
+        return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);
+    }
 }

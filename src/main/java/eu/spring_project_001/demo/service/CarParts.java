@@ -1,5 +1,6 @@
 package eu.spring_project_001.demo.service;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,7 +30,7 @@ public class CarParts
     private String oilSump;
     private String exhaust;
     private String engine;
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "car_id")
     private Car car;

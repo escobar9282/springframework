@@ -1,5 +1,6 @@
 package eu.spring_project_001.demo.service;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,10 +25,12 @@ public class Car
     private String model;
     private String makeOfCar;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "owner_id")
     private Owner owner;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "car")
     private Set<CarParts> carParts;
 
