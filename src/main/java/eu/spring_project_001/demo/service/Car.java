@@ -21,6 +21,7 @@ public class Car
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Enumerated(EnumType.STRING)
     private TypeOfEngine typeOfEngine;
     private String model;
     private String makeOfCar;

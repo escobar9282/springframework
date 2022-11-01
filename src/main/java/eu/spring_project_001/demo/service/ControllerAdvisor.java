@@ -34,4 +34,11 @@ public class ControllerAdvisor
         ErrorMessage errorMessage = new ErrorMessage(400, LocalDate.now(), exception.getMessage(), "Exception has appeared please fix the request.");
         return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(InvalidTypeOfEngineException.class)
+    public ResponseEntity<ErrorMessage> concealEngine(InvalidTypeOfEngineException exception)
+    {
+        ErrorMessage errorMessage = new ErrorMessage(400, LocalDate.now(), exception.getMessage(), "Exception has appeared please fix the request.");
+        return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);
+    }
 }

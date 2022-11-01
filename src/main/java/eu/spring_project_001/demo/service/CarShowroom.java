@@ -17,7 +17,7 @@ public class CarShowroom
     {
         Car carToSave = new Car();
         carToSave.setMakeOfCar(carDto.getMakeOfCar());
-        carToSave.setTypeOfEngine(carDto.getTypeOfEngine());
+        carToSave.setTypeOfEngine(TypeOfEngine.validatedTypeOfEngine(carDto.getTypeOfEngine()));
         carToSave.setModel(carDto.getModel());
         carToSave.setOwner(resolveOwnerById(carDto.getOwnerId()));
         carRepo.save(carToSave);
@@ -43,7 +43,7 @@ public class CarShowroom
         Car concealedCar = carRepo.findById(id).orElseThrow(()-> new CarNotFoundException(id));
         concealedCar.setMakeOfCar(carDto.getMakeOfCar());
         concealedCar.setModel(carDto.getModel());
-        concealedCar.setTypeOfEngine(carDto.getTypeOfEngine());
+        concealedCar.setTypeOfEngine(TypeOfEngine.validatedTypeOfEngine(carDto.getTypeOfEngine()));
         concealedCar.setOwner(resolveOwnerById(carDto.getOwnerId()));
         carRepo.save(concealedCar);
 

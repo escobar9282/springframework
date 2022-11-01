@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CarDto
 {
-    private TypeOfEngine typeOfEngine;
+    private String typeOfEngine;
     private String model;
     private String makeOfCar;
     private Long ownerId;
