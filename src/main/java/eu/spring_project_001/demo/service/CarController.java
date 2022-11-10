@@ -1,5 +1,6 @@
 package eu.spring_project_001.demo.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,5 +42,11 @@ public class CarController
     {
        Car editCar = carShowroom.editCar(id, carDto);
        return new ResponseEntity<>(editCar, HttpStatus.OK);
+    }
+
+    @PatchMapping("/editElement/{id}")
+    public ResponseEntity<Car> editCarElement(@PathVariable("id")Long id, @RequestBody CarDto carDto) throws JsonProcessingException {
+        Car editCar = carShowroom.editCarElement(id, carDto);
+        return new ResponseEntity<>(editCar, HttpStatus.OK);
     }
 }

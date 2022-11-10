@@ -1,10 +1,15 @@
 package eu.spring_project_001.demo.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -12,6 +17,8 @@ public class CarShowroom
 {
     private final CarRepo carRepo;
     private final OwnerRepo ownerRepo;
+
+    private final ObjectMapper objectMapper;
 
     public void addCarToSystem(CarDto carDto)
     {
@@ -48,6 +55,52 @@ public class CarShowroom
         carRepo.save(concealedCar);
 
         return concealedCar;
+    }
+    public Car editCarElement(Long id, CarDto carDto) throws JsonProcessingException {
+        Car concealedCar = carRepo.findById(id).orElseThrow(()-> new CarNotFoundException(id));
+        List<String> undergoneObject = List.of("model", "makeOfCar", "typeOfEngine", "ownerId");
+        List<String> equalizedObjects = new ArrayList<>();
+        String carAsString = objectMapper.writeValueAsString(carDto).replace('"',' ');
+        for (int i = 0; i < undergoneObject.size(); i++)
+        {
+            if (carAsString.contains(undergoneObject.get(i)))
+            {
+                if (i == undergoneObject.size() - 1)
+                {
+                    String result = StringUtils.substringBetween( carAsString, undergoneObject.get(i) + " :", "}");
+                    equalizedObjects.add(result);
+                    break;
+                }
+                String result = StringUtils.substringBetween( carAsString, undergoneObject.get(i) + " :", ",");
+                equalizedObjects.add(result);
+            }
+        }
+        resolveSetterMethodForCar(equalizedObjects, carDto, concealedCar);
+        carRepo.save(concealedCar);
+
+        return concealedCar;
+    }
+    private void resolveSetterMethodForCar(List<String> jsonValues, CarDto carDto, Car concealedCar)
+    {
+        if (!"null".equals(jsonValues.get(0)))
+        {
+            concealedCar.setModel(carDto.getModel());
+        }
+
+        if (!"null".equals(jsonValues.get(1)))
+        {
+            concealedCar.setMakeOfCar(carDto.getMakeOfCar());
+        }
+
+        if (!"null".equals(jsonValues.get(2)))
+        {
+            concealedCar.setTypeOfEngine(TypeOfEngine.validatedTypeOfEngine(carDto.getTypeOfEngine()));
+        }
+
+        if (!"null".equals(jsonValues.get(3)))
+        {
+            concealedCar.setOwner(resolveOwnerById(carDto.getOwnerId()));
+        }
     }
 
 }
