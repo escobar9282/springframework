@@ -1,4 +1,4 @@
-package eu.spring_project_001.demo.service;
+package eu.spring_project_001.demo.service.carparts;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

@@ -1,5 +1,9 @@
-package eu.spring_project_001.demo.service;
+package eu.spring_project_001.demo.service.errors;
 
+import eu.spring_project_001.demo.service.exceptions.CarNotFoundException;
+import eu.spring_project_001.demo.service.exceptions.CarPartsNotFoundException;
+import eu.spring_project_001.demo.service.exceptions.InvalidTypeOfEngineException;
+import eu.spring_project_001.demo.service.exceptions.OwnerNotFoundException;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;

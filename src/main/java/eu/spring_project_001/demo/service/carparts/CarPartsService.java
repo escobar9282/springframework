@@ -1,10 +1,13 @@
-package eu.spring_project_001.demo.service;
+package eu.spring_project_001.demo.service.carparts;
 
+import eu.spring_project_001.demo.service.exceptions.CarNotFoundException;
+import eu.spring_project_001.demo.service.exceptions.CarPartsNotFoundException;
+import eu.spring_project_001.demo.service.car.Car;
+import eu.spring_project_001.demo.service.car.CarRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service

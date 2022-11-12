@@ -1,5 +1,7 @@
-package eu.spring_project_001.demo.service;
+package eu.spring_project_001.demo.service.owner;
 
+import eu.spring_project_001.demo.service.car.Car;
+import eu.spring_project_001.demo.service.carservice.CarService;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,15 +1,18 @@
-package eu.spring_project_001.demo.service;
+package eu.spring_project_001.demo.service.car;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import eu.spring_project_001.demo.service.enums.TypeOfEngine;
+import eu.spring_project_001.demo.service.exceptions.CarNotFoundException;
+import eu.spring_project_001.demo.service.exceptions.OwnerNotFoundException;
+import eu.spring_project_001.demo.service.owner.Owner;
+import eu.spring_project_001.demo.service.owner.OwnerRepo;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor

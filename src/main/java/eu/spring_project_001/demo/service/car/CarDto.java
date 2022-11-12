@@ -1,4 +1,4 @@
-package eu.spring_project_001.demo.service;
+package eu.spring_project_001.demo.service.car;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

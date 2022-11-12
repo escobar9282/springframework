@@ -1,4 +1,4 @@
-package eu.spring_project_001.demo.service;
+package eu.spring_project_001.demo.service.car;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;

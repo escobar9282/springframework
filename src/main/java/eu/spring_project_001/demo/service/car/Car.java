@@ -1,6 +1,9 @@
-package eu.spring_project_001.demo.service;
+package eu.spring_project_001.demo.service.car;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import eu.spring_project_001.demo.service.carparts.CarParts;
+import eu.spring_project_001.demo.service.owner.Owner;
+import eu.spring_project_001.demo.service.enums.TypeOfEngine;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

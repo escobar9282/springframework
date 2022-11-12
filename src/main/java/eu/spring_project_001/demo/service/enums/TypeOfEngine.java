@@ -1,10 +1,12 @@
-package eu.spring_project_001.demo.service;
+package eu.spring_project_001.demo.service.enums;
+
+import eu.spring_project_001.demo.service.exceptions.InvalidTypeOfEngineException;
 
 public enum TypeOfEngine
 {
     ELECTRIC, PETROL, MIXED, DOUBLE_ELECTRIC;
 
-    static TypeOfEngine validatedTypeOfEngine(String type)
+    public static TypeOfEngine validatedTypeOfEngine(String type)
     {
         if (ELECTRIC.name().equals(type.toUpperCase()))
         {

@@ -1,9 +1,9 @@
-package eu.spring_project_001.demo.service;
+package eu.spring_project_001.demo.service.exceptions;
 
 public class OwnerNotFoundException extends RuntimeException
 {
     private static final String MESSAGE = "Owner with id %s not found.";
-    OwnerNotFoundException(Long id)
+    public OwnerNotFoundException(Long id)
     {
         super(String.format(MESSAGE, id));
     }

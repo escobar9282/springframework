@@ -1,8 +1,8 @@
-package eu.spring_project_001.demo.service;
+package eu.spring_project_001.demo.service.owner;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CarPartsRepo extends JpaRepository<CarParts, Long> {
+public interface OwnerRepo extends JpaRepository<Owner, Long> {
 }
