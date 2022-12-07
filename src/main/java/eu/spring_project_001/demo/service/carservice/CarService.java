@@ -5,8 +5,15 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.mapping.Set;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Entity
 @AllArgsConstructor
@@ -47,4 +54,28 @@ public class CarService {
     @ManyToOne
     @JoinColumn(name = "owner_id")
     private Owner owner;
+
+
+    public Double getPrice(String partName)
+    {
+        final Map<String, Double> regainMap = Map.of("maxPriceForWheel",this.maxPriceForWheel,
+                "maxPriceForBrakes", this.maxPriceForBrakes, "maxPriceForAluRim", this.maxPriceForAluRim,
+               "maxPriceForTurbine", this.maxPriceForTurbine, "maxPriceForGearbox", this.maxPriceForGearbox,
+                "maxPriceForLightBulb", this.maxPriceForLightBulb, "maxPriceForWipers", this.maxPriceForWipers,
+                "maxPriceForOilSump", this.maxPriceForOilSump, "maxPriceForExhaust", this.maxPriceForExhaust,
+                "maxPriceForEngine", this.maxPriceForEngine);
+        final Map<String, Double> regainMap2 = Map.of("maxPriceForLights", this.maxPriceForLights,
+                "minPriceForWheel", this.minPriceForWheel,
+                "minPriceForBrakes", this.minPriceForBrakes, "minPriceForAluRim", this.minPriceForAluRim,
+                "minPriceForTurbine", this.minPriceForTurbine, "minPriceForGearbox", this.minPriceForGearbox,
+                "minPriceForLightBulb", this.minPriceForLightBulb, "minPriceForWipers", this.minPriceForWipers,
+                "minPriceForOilSump", this.minPriceForOilSump, "minPriceForExhaust", this.minPriceForExhaust);
+        final Map<String, Double> regainMap3 = Map.of("minPriceForEngine", this.minPriceForEngine, "minPriceForLights", this.minPriceForLights);
+
+        return Stream.of(regainMap, regainMap2, regainMap3)
+                .flatMap(Map::of)
+                .filter(s->s.equals(partName));
+
+
+    }
 }

@@ -1,9 +1,6 @@
 package eu.spring_project_001.demo.service.errors;
 
-import eu.spring_project_001.demo.service.exceptions.CarNotFoundException;
-import eu.spring_project_001.demo.service.exceptions.CarPartsNotFoundException;
-import eu.spring_project_001.demo.service.exceptions.InvalidTypeOfEngineException;
-import eu.spring_project_001.demo.service.exceptions.OwnerNotFoundException;
+import eu.spring_project_001.demo.service.exceptions.*;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
@@ -44,5 +41,12 @@ public class ControllerAdvisor
     {
         ErrorMessage errorMessage = new ErrorMessage(400, LocalDate.now(), exception.getMessage(), "Exception has appeared please fix the request.");
         return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(OwnerDoesNotHaveThatCarException.class)
+    public ResponseEntity<ErrorMessage> appearedOwner(OwnerDoesNotHaveThatCarException exception)
+    {
+        ErrorMessage errorMessage = new ErrorMessage(404, LocalDate.now(), exception.getMessage(), "Exception has appeared please fix the problem.");
+        return new ResponseEntity<>(errorMessage, HttpStatus.NOT_FOUND);
     }
 }

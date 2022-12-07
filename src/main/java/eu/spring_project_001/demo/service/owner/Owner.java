@@ -2,6 +2,7 @@ package eu.spring_project_001.demo.service.owner;
 
 import eu.spring_project_001.demo.service.car.Car;
 import eu.spring_project_001.demo.service.carservice.CarService;
+import eu.spring_project_001.demo.service.partstorepair.RepairOrder;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,6 +34,9 @@ public class Owner
 
     @OneToMany(mappedBy = "owner")
     private Set<Car> cars;
+
+    @OneToMany(mappedBy = "owner")
+    private Set<RepairOrder> repairOrders;
 
     @OneToMany(mappedBy = "owner")
     private Set<CarService> carServiceSet;
