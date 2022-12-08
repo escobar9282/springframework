@@ -49,4 +49,11 @@ public class ControllerAdvisor
         ErrorMessage errorMessage = new ErrorMessage(404, LocalDate.now(), exception.getMessage(), "Exception has appeared please fix the problem.");
         return new ResponseEntity<>(errorMessage, HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(InvalidUserDataException.class)
+    public ResponseEntity<ErrorMessage> invalidUserDataExc(InvalidUserDataException exception)
+    {
+        ErrorMessage errorMessage = new ErrorMessage(400, LocalDate.now(), exception.getMessage(), "Exception has appeared please fix the problem.");
+        return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);
+    }
 }

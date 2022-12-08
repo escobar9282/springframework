@@ -1,7 +1,6 @@
 package eu.spring_project_001.demo.service.partstorepair;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import eu.spring_project_001.demo.service.owner.Owner;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +16,7 @@ import javax.persistence.*;
 public class CarPartsToRepair
 {
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String partName;

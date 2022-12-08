@@ -23,7 +23,7 @@ public class RepairCommand
     @NotNull
     @NotBlank
     private String model;
-    private LocalDate carProductionDate;
+    private String carProductionDate;
 
     @NotNull
     private List<PartsCommand> partsCommand;

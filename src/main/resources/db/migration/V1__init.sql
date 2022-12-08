@@ -1,6 +1,6 @@
 -- create table owner
 -- (
---     id int not null ,
+--     id bigint not null ,
 --     firstName varchar(255),
 --     lastName varchar(255),
 --     age int not null ,
@@ -13,11 +13,11 @@
 --
 -- create table car
 -- (
---     id int not null,
+--     id bigint not null,
 --     typeOfEngine varchar(255),
 --     model varchar(255),
 --     makeOfCar varchar(255),
 --     ownerId int,
 --     primary key (id),
---     foreign key (ownerId) references owner(ownerId)
+--     foreign key (ownerId) references owner(id)
 -- );

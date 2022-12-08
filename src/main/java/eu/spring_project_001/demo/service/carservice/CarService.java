@@ -73,8 +73,9 @@ public class CarService {
         final Map<String, Double> regainMap3 = Map.of("minPriceForEngine", this.minPriceForEngine, "minPriceForLights", this.minPriceForLights);
 
         return Stream.of(regainMap, regainMap2, regainMap3)
-                .flatMap(Map::of)
-                .filter(s->s.equals(partName));
+                .flatMap(m -> m.entrySet().stream())
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue))
+                .get(partName);
 
 
     }
