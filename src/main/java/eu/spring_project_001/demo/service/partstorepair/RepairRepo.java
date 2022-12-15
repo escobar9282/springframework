@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-interface RepairRepo extends JpaRepository<RepairOrder, Long>
+interface RepairRepo extends JpaRepository<RepairOrder, Integer>
 {
     @Query("select r from RepairOrder r where r.firstName = ?1 and r.lastName = ?2")
     List<RepairOrder> searchForRepairs(String firstName, String lastName);

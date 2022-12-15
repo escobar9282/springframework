@@ -18,13 +18,13 @@ public class CarPartsToRepair
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String partName;
     private int numberOfParts;
     private double summaryPrice;
 
     @ManyToOne
     @JsonIgnore
-    @JoinColumn(name = "repair_order_id")
+    @JoinColumn(name = "repair_order_id", columnDefinition = "int4")
     private RepairOrder repairOrder;
 }

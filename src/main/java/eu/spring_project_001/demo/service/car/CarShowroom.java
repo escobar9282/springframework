@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -33,9 +34,11 @@ public class CarShowroom
         carRepo.save(carToSave);
     }
 
-    public List<Car> getAllCars()
+    public List<Car> getAllCars(String parameter)
     {
-        return carRepo.findAll();
+        if (Objects.isNull(parameter) || StringUtils.isEmpty(parameter))
+            return carRepo.findAll();
+        return carRepo.findAll().stream().filter(value -> value.getMakeOfCar().equals(parameter)).toList();
     }
 
     public void deleteCar(Long id)

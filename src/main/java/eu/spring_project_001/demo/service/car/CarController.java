@@ -24,9 +24,9 @@ public class CarController
     }
 
     @GetMapping
-    public ResponseEntity<List<Car>> getCars()
+    public ResponseEntity<List<Car>> getCars(@RequestParam String parameter)
     {
-        List<Car> carList = carShowroom.getAllCars();
+        List<Car> carList = carShowroom.getAllCars(parameter);
         return new ResponseEntity<>(carList, HttpStatus.OK);
     }
 
