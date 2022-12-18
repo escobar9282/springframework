@@ -22,7 +22,7 @@ public class RepairController
     }
 
     @GetMapping("/list")
-    public ResponseEntity<List<PartsToRepairView>> getRepairs(@RequestParam String firstName, @RequestParam String lastName)
+    public ResponseEntity<List<PartsToRepairView>> getRepairs(@RequestParam(required = false) String firstName, @RequestParam(required = false) String lastName)
     {
         List<PartsToRepairView> responseFromSystem = repairService.getRepairs(firstName, lastName);
         return  new ResponseEntity<>(responseFromSystem, HttpStatus.OK);

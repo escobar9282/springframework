@@ -17,7 +17,8 @@ public class CarPartsToRepair
 {
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator="generate")
+    @SequenceGenerator(name="generate", sequenceName="HIBERNATE_SEQUENCE", allocationSize = 1)
     private Integer id;
     private String partName;
     private int numberOfParts;

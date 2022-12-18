@@ -77,7 +77,7 @@ public class RepairService
         for (int i = 0; i < numberOfJsons; i++)
         {
             String oneJson = StringUtils.substringBetween(json, "{", "}");
-            partsData.put(StringUtils.substringBetween(oneJson, "\"partName\":\"", "\","), Integer.parseInt(StringUtils.substringBetween(oneJson,"\"numberOfParts\":\"", "" )));
+            partsData.put(StringUtils.substringBetween(oneJson, "\"partName\":\"", "\","), Integer.parseInt(StringUtils.substringAfter(oneJson,"\"numberOfParts\":")));
             json = StringUtils.remove(json,"{" + oneJson + "}");
         }
         return partsData;
