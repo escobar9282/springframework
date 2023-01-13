@@ -1,7 +1,5 @@
 package eu.spring_project_001.demo.service.enums;
 
-import java.util.Arrays;
-import java.util.List;
 
 public enum PremiumCar
 {
@@ -25,10 +23,10 @@ public enum PremiumCar
 
     public static boolean isCarPremium(String name)
     {
-        List<PremiumCar> listOfCars = Arrays.asList(PremiumCar.values());
         try
         {
-            return listOfCars.contains(PremiumCar.valueOf(name));
+            PremiumCar.valueOf(name.toUpperCase());
+            return true;
         }
         catch (IllegalArgumentException e)
         {
