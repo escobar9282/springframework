@@ -19,7 +19,6 @@ import java.util.Set;
 public class Owner
 {
     @Id
-    @Column(name = "owner_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

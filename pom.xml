@@ -94,6 +94,7 @@
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>9.6.0</version>
                 <configuration>
+                    <cleanDisabled>false</cleanDisabled>
                     <defaultSchema>
                         public
                     </defaultSchema>

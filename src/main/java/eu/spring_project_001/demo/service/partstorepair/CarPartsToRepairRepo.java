@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CarPartsToRepairRepo extends JpaRepository<CarPartsToRepair, Integer>
+public interface CarPartsToRepairRepo extends JpaRepository<CarPartsToRepair, Long>
 {
 
 }

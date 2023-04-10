@@ -16,10 +16,8 @@ import javax.persistence.*;
 public class CarPartsToRepair
 {
     @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator="generate")
-    @SequenceGenerator(name="generate", sequenceName="HIBERNATE_SEQUENCE", allocationSize = 1)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String partName;
     private int numberOfParts;
     private double summaryPrice;

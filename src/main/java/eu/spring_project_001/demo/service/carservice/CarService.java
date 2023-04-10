@@ -21,10 +21,10 @@ import java.util.stream.Stream;
 @Getter
 @Setter
 @Table(name = "carService")
-public class CarService {
+public class CarService
+{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id=1L;
 
 
     private double minPriceForWheel = 200.0;

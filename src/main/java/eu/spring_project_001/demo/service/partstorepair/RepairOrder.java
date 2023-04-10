@@ -18,9 +18,8 @@ import java.util.Set;
 public class RepairOrder
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator="generate")
-    @SequenceGenerator(name="generate", sequenceName="HIBERNATE_SEQUENCE", allocationSize = 1)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String firstName;
     private String lastName;
