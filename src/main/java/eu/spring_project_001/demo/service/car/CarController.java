@@ -16,7 +16,7 @@ public class CarController
 {
     private final CarShowroom carShowroom;
 
-    @PostMapping("/add")
+    @PostMapping(value = "/add",consumes = {"application/json"}, produces = {"application/json"})
     public ResponseEntity<Car> addCar(@RequestBody @Validated CarDto car)
     {
         carShowroom.addCarToSystem(car);

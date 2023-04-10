@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class CarPartsToRepair
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String partName;
     private int numberOfParts;

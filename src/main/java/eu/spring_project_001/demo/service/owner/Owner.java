@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -19,7 +20,7 @@ import java.util.Set;
 public class Owner
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String firstName;
@@ -39,4 +40,19 @@ public class Owner
 
     @OneToMany(mappedBy = "owner")
     private Set<CarService> carServiceSet;
+
+    public Owner(String firstName, String lastName, int age, String identity, String streetName, String city, int postalCode, double availableAmountOfMoney, Set<Car> cars, Set<RepairOrder> repairOrders, Set<CarService> carServiceSet)
+    {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.identity = identity;
+        this.streetName = streetName;
+        this.city = city;
+        this.postalCode = postalCode;
+        this.availableAmountOfMoney = availableAmountOfMoney;
+        this.cars = cars;
+        this.repairOrders = repairOrders;
+        this.carServiceSet = carServiceSet;
+    }
 }
